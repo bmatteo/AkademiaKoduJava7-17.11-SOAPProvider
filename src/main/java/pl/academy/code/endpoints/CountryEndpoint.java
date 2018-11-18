@@ -25,6 +25,7 @@ public class CountryEndpoint {
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getCountryRequest")
     @ResponsePayload
     public GetCountryResponse getCountryResponse(@RequestPayload GetCountryRequest getCountryRequest) {
+        System.out.println("Serwis zawołany - przyszło: " + getCountryRequest.getName());
         GetCountryResponse response = new GetCountryResponse();
         Country countryToSend = this.countryRepository.findCountry(getCountryRequest.getName());
         response.setCountry(countryToSend);
